@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dogs Make Lemonade</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:linear-gradient(#fff8dc,#ffe680);
+margin:0;
+text-align:center;
+color:#333;
+}
+
+header{
+background:#ffde59;
+padding:30px;
+}
+
+h1{
+color:#6b4700;
+font-size:48px;
+margin:0;
+}
+
+.tagline{
+font-size:24px;
+font-weight:bold;
+color:#16723a;
+margin-top:10px;
+}
+
+.card{
+background:white;
+max-width:900px;
+margin:20px auto;
+padding:25px;
+border-radius:15px;
+box-shadow:0 4px 10px rgba(0,0,0,.1);
+}
+
+h2{
+color:#6b4700;
+}
+
+.proceeds{
+font-size:24px;
+font-weight:bold;
+color:#16723a;
+margin-top:15px;
+}
+
+.goalbox{
+font-size:22px;
+font-weight:bold;
+margin:10px;
+}
+
+.progress-container{
+width:90%;
+max-width:600px;
+background:#ddd;
+margin:20px auto;
+border-radius:50px;
+overflow:hidden;
+}
+
+.progress-bar{
+height:40px;
+width:0%;
+background:#16723a;
+color:white;
+font-weight:bold;
+line-height:40px;
+}
+
+.menu{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+margin-top:20px;
+}
+
+.menu-item{
+background:#fffdf5;
+border:3px solid #ffe37b;
+padding:20px;
+border-radius:12px;
+}
+
+.price{
+font-size:32px;
+font-weight:bold;
+color:#16723a;
+}
+
+.team{
+font-size:24px;
+font-weight:bold;
+}
+
+footer{
+background:#ffde59;
+padding:20px;
+margin-top:30px;
+font-weight:bold;
+color:#6b4700;
+}
+
+.qr-placeholder{
+border:3px dashed #999;
+padding:25px;
+margin:15px auto;
+max-width:350px;
+background:#fafafa;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🐶 Dogs Make Lemonade 🍋</h1>
+<div class="tagline">Every Cup Helps a Pup!</div>
+</header>
+
+<div class="card">
+<h2>🐾 Our Mission</h2>
+
+<p>
+Hi! We are Miles, Penny, Blake, and Mila.
+</p>
+
+<p>
+We created this lemonade stand to help animals in need.
+</p>
+
+<div class="proceeds">
+❤️ 100% OF PROCEEDS GO TO ANIMAL SHELTERS ❤️
+</div>
+</div>
+
+<div class="card">
+
+<h2>🏆 Animal Shelter Fundraiser Goal</h2>
+
+<p>
+We're raising money to help animals find safe and happy homes.
+</p>
+
+<div id="raised" class="goalbox"></div>
+<div id="goal" class="goalbox"></div>
+<div id="needed" class="goalbox"></div>
+<div id="percent" class="goalbox"></div>
+
+<div class="progress-container">
+<div id="progressBar" class="progress-bar"></div>
+</div>
+
+<div id="goalMessage" class="goalbox"></div>
+
+<br>
+
+<h3>🎯 Milestones</h3>
+
+<p>🎉 $100 - Buy shelter supplies</p>
+<p>🐶 $250 - Support more animals</p>
+<p>❤️ $500 - Goal Reached!</p>
+<p>🏆 $1,000 - Super Stretch Goal</p>
+
+</div>
+
+<div class="card">
+
+<h2>🍋 Our Menu</h2>
+
+<div class="menu">
+
+<div class="menu-item">
+<h3>🍋 Fresh Lemonade</h3>
+<div class="price">$2</div>
+</div>
+
+<div class="menu-item">
+<h3>🐕 Micro or Mini Dog Bracelet</h3>
+<p>Latex Free</p>
+<div class="price">$2</div>
+</div>
+
+<div class="menu-item">
+<h3>🐾 Standard or XL Dog Bracelet</h3>
+<p>Latex Free</p>
+<div class="price">$5</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>👋 Meet The Team</h2>
+
+<div class="team">
+Miles • Penny • Blake • Mila
+</div>
+
+<br>
+
+<p>
+Thank you for helping shelter animals!
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>📸 Photos</h2>
+
+<p>
+Add pictures of your lemonade stand here later.
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>🌐 Website QR Code</h2>
+
+<div class="qr-placeholder">
+Add your website QR code here after your website is published.
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>❤️ Donation QR Code</h2>
+
+<div class="qr-placeholder">
+Add a parent-managed Venmo, PayPal, or Cash App QR code here.
+</div>
+
+<p>
+Always use a parent or guardian's account.
+</p>
+
+</div>
+
+<footer>
+
+🐶 Every Cup Helps a Pup! 🍋
+
+<br><br>
+
+100% of proceeds help animal shelters.
+
+</footer>
+
+<script>
+
+/*
+ONLY CHANGE THIS NUMBER
+*/
+
+const moneyRaised = 0;
+
+const goalAmount = 500;
+
+const moneyNeeded =
+Math.max(goalAmount - moneyRaised,0);
+
+const percentage =
+Math.min(
+Math.round((moneyRaised/goalAmount)*100),
+100
+);
+
+document.getElementById("raised").innerHTML =
+"💰 Raised So Far: $" + moneyRaised;
+
+document.getElementById("goal").innerHTML =
+"🎯 Goal: $" + goalAmount;
+
+document.getElementById("needed").innerHTML =
+"🏦 Still Needed: $" + moneyNeeded;
+
+document.getElementById("percent").innerHTML =
+"📈 Progress: " + percentage + "%";
+
+document.getElementById("progressBar").style.width =
+percentage + "%";
+
+document.getElementById("progressBar").innerHTML =
+percentage + "%";
+
+if(moneyRaised >= goalAmount)
+{
+document.getElementById("goalMessage").innerHTML =
+"🎉 WE DID IT! GOAL REACHED! 🎉";
+}
+
+</script>
+
+</body>
+</html>
