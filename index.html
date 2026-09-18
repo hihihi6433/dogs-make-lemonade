@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dogs Make Lemonade 🍋</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;text-align:center;color:#333;background:linear-gradient(#fff8dc,#ffe680)}
+header,footer{background:#ffde59;padding:28px 16px}h1{margin:0;color:#6b4700;font-size:clamp(34px,8vw,52px)}h2{color:#6b4700}.tagline{font-size:22px;font-weight:bold;color:#16723a;margin:10px}.animals{font-size:28px;margin-top:10px;letter-spacing:4px}.card{max-width:900px;margin:18px auto;padding:24px;background:#fff;border-radius:15px;box-shadow:0 4px 10px #0002}.proceeds,.goalbox{font-weight:bold;font-size:21px;margin:10px}.proceeds{color:#16723a}.progress{max-width:600px;width:90%;height:40px;margin:20px auto;background:#ddd;border-radius:50px;overflow:hidden}.bar{height:100%;width:0;background:#16723a;color:white;font-weight:bold;line-height:40px;transition:.5s}.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.item{padding:18px;background:#fffdf5;border:3px solid #ffe37b;border-radius:12px}.price{font-size:30px;font-weight:bold;color:#16723a}.animals-list{font-size:23px;line-height:1.8}.qr{border:3px dashed #999;padding:22px;max-width:400px;margin:auto;background:#fafafa;border-radius:12px}p{font-size:17px;line-height:1.5}@media(max-width:600px){.card{margin:12px 8px;padding:18px}}
+</style>
+</head>
+<body>
+<header>
+<h1>🐶 Dogs Make Lemonade 🍋</h1>
+<div class="tagline">Every Cup Helps a Pup! 🐶</div>
+<div class="animals">🐶 🐱 🐰 🐹 🐢 🐠 🐡 🐬 🐳 🦭 🐙 🦀</div>
+</header>
+<section class="card">
+<h2>🐾 Our Mission 🐾</h2>
+<p>Hi! We are Miles, Penny, Blake, and Mila. 👋</p>
+<p>We created this lemonade stand to help animals in need. 🐶🐱🐰🐠</p>
+<div class="proceeds">❤️ 100% OF PROCEEDS GO TO ANIMAL SHELTERS! 🐾</div>
+</section>
+<section class="card">
+<h2>🏆 Animal Shelter Fundraiser Goal 🏆</h2>
+<p>We're raising money to help animals find safe and happy homes. 🏠🐶🐱🐰</p>
+<div id="raised" class="goalbox"></div><div id="goal" class="goalbox"></div>
+<div id="needed" class="goalbox"></div><div id="percent" class="goalbox"></div>
+<div class="progress"><div id="bar" class="bar"></div></div>
+<div id="message" class="goalbox"></div>
+<h3>🎯 Milestones 🎯</h3>
+<p>🎉 $100 - Buy shelter supplies. 🐾</p>
+<p>🐶 $250 - Support more animals. 🐶</p>
+<p>❤️ $500 - Goal Reached! 🎊</p>
+<p>🏆 $1,000 - Super Stretch Goal! 🌟</p>
+</section>
+<section class="card">
+<h2>🍋 Our Menu 🍋</h2>
+<div class="menu">
+<div class="item"><h3>🍋 Fresh Lemonade 🍋</h3><div class="price">$2 💵</div><p>Enjoy a refreshing cup while helping animals. 🐶🐱🐰🐠</p></div>
+<div class="item"><h3>🐕 Micro or Mini Dog Bracelet 🐕</h3><p>Latex Free. 🌈</p><p>Check the actual product materials and fit before using it on a dog. 🐶</p><div class="price">$2 💵</div></div>
+<div class="item"><h3>🐾 Standard or XL Dog Bracelet 🐾</h3><p>Latex Free. 🌈</p><p>Check the actual product materials and fit before using it on a dog. 🐕</p><div class="price">$5 💵</div></div>
+</div>
+</section>
+<section class="card">
+<h2>🌎 Animals We Care About 🌎</h2>
+<p>We care about animals of all kinds, including land animals and sea animals. 🐶🐱🐰🐡🐬</p>
+<div class="animals-list">🐶 Dogs • 🐱 Cats • 🐰 Bunnies • 🐹 Hamsters<br>
+🐢 Turtles • 🦔 Hedgehogs • 🦊 Foxes • 🐻 Bears<br>
+🐠 Fish • 🐡 Pufferfish • 🐬 Dolphins • 🐳 Whales<br>
+🦭 Seals • 🐙 Octopuses • 🦀 Crabs • 🦞 Lobsters</div>
+</section>
+<section class="card"><h2>👋 Meet The Team 👋</h2><div class="animals-list">Miles • Penny • Blake • Mila 🐶🍋</div><p>Thank you for helping shelter animals! ❤️🐶🐱🐰🐠</p></section>
+<section class="card"><h2>📸 Photos 📸</h2><p>Add pictures of your lemonade stand here later. 🍋📷</p></section>
+<section class="card"><h2>🌐 Website QR Code 🌐</h2><div class="qr">Add your website QR code here after your website is published. 📱🌐</div></section>
+<section class="card"><h2>❤️ Donation QR Code ❤️</h2><div class="qr">Add a parent-managed Venmo, PayPal, or Cash App QR code here. 💳❤️</div><p>Always use a parent or guardian's account. 👨‍👩‍👧‍👦</p></section>
+<footer>🐶 Every Cup Helps a Pup! 🍋<br><br>100% of proceeds help animal shelters. ❤️🐶🐱🐰🐠</footer>
+<script>
+const moneyRaised = 0;
+const goalAmount = 500;
+const needed = Math.max(goalAmount-moneyRaised,0);
+const percent = Math.min(Math.round((moneyRaised/goalAmount)*100),100);
+document.getElementById("raised").textContent="💰 Raised So Far: $"+moneyRaised+" 🐾";
+document.getElementById("goal").textContent="🎯 Goal: $"+goalAmount+" 🏆";
+document.getElementById("needed").textContent="🏦 Still Needed: $"+needed+" ❤️";
+document.getElementById("percent").textContent="📈 Progress: "+percent+"% 🎉";
+document.getElementById("bar").style.width=percent+"%";
+document.getElementById("bar").textContent=percent+"% 🐾";
+if(moneyRaised>=goalAmount)document.getElementById("message").textContent="🎉 WE DID IT! GOAL REACHED! 🐶🐱🐰🐠";
+</script>
+</body>
+</html>
