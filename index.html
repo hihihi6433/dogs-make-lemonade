@@ -1,72 +1,485 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Dogs Make Lemonade 🍋</title>
-<style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;text-align:center;color:#333;background:linear-gradient(#fff8dc,#ffe680)}
-header,footer{background:#ffde59;padding:28px 16px}h1{margin:0;color:#6b4700;font-size:clamp(34px,8vw,52px)}h2{color:#6b4700}.tagline{font-size:22px;font-weight:bold;color:#16723a;margin:10px}.animals{font-size:28px;margin-top:10px;letter-spacing:4px}.card{max-width:900px;margin:18px auto;padding:24px;background:#fff;border-radius:15px;box-shadow:0 4px 10px #0002}.proceeds,.goalbox{font-weight:bold;font-size:21px;margin:10px}.proceeds{color:#16723a}.progress{max-width:600px;width:90%;height:40px;margin:20px auto;background:#ddd;border-radius:50px;overflow:hidden}.bar{height:100%;width:0;background:#16723a;color:white;font-weight:bold;line-height:40px;transition:.5s}.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.item{padding:18px;background:#fffdf5;border:3px solid #ffe37b;border-radius:12px}.price{font-size:30px;font-weight:bold;color:#16723a}.animals-list{font-size:23px;line-height:1.8}.qr{border:3px dashed #999;padding:22px;max-width:400px;margin:auto;background:#fafafa;border-radius:12px}p{font-size:17px;line-height:1.5}@media(max-width:600px){.card{margin:12px 8px;padding:18px}}
-</style>
-</head>
-<body>
-<header>
-<h1>🐶 Dogs Make Lemonade 🍋</h1>
-<div class="tagline">Every Cup Helps a Pup! 🐶</div>
-<div class="animals">🐶 🐱 🐰 🐹 🐢 🐠 🐡 🐬 🐳 🦭 🐙 🦀</div>
-</header>
-<section class="card">
-<h2>🐾 Our Mission 🐾</h2>
-<p>Hi! We are Miles, Penny, Blake, and Mila. 👋</p>
-<p>We created this lemonade stand to help animals in need. 🐶🐱🐰🐠</p>
-<div class="proceeds">❤️ 100% OF PROCEEDS GO TO ANIMAL SHELTERS! 🐾</div>
-</section>
-<section class="card">
-<h2>🏆 Animal Shelter Fundraiser Goal 🏆</h2>
-<p>We're raising money to help animals find safe and happy homes. 🏠🐶🐱🐰</p>
-<div id="raised" class="goalbox"></div><div id="goal" class="goalbox"></div>
-<div id="needed" class="goalbox"></div><div id="percent" class="goalbox"></div>
-<div class="progress"><div id="bar" class="bar"></div></div>
-<div id="message" class="goalbox"></div>
-<h3>🎯 Milestones 🎯</h3>
-<p>🎉 $100 - Buy shelter supplies. 🐾</p>
-<p>🐶 $250 - Support more animals. 🐶</p>
-<p>❤️ $500 - Goal Reached! 🎊</p>
-<p>🏆 $1,000 - Super Stretch Goal! 🌟</p>
-</section>
-<section class="card">
-<h2>🍋 Our Menu 🍋</h2>
-<div class="menu">
-<div class="item"><h3>🍋 Fresh Lemonade 🍋</h3><div class="price">$2 💵</div><p>Enjoy a refreshing cup while helping animals. 🐶🐱🐰🐠</p></div>
-<div class="item"><h3>🐕 Micro or Mini Dog Bracelet 🐕</h3><p>Latex Free. 🌈</p><p>Check the actual product materials and fit before using it on a dog. 🐶</p><div class="price">$2 💵</div></div>
-<div class="item"><h3>🐾 Standard or XL Dog Bracelet 🐾</h3><p>Latex Free. 🌈</p><p>Check the actual product materials and fit before using it on a dog. 🐕</p><div class="price">$5 💵</div></div>
-</div>
-</section>
-<section class="card">
-<h2>🌎 Animals We Care About 🌎</h2>
-<p>We care about animals of all kinds, including land animals and sea animals. 🐶🐱🐰🐡🐬</p>
-<div class="animals-list">🐶 Dogs • 🐱 Cats • 🐰 Bunnies • 🐹 Hamsters<br>
-🐢 Turtles • 🦔 Hedgehogs • 🦊 Foxes • 🐻 Bears<br>
-🐠 Fish • 🐡 Pufferfish • 🐬 Dolphins • 🐳 Whales<br>
-🦭 Seals • 🐙 Octopuses • 🦀 Crabs • 🦞 Lobsters</div>
-</section>
-<section class="card"><h2>👋 Meet The Team 👋</h2><div class="animals-list">Miles • Penny • Blake • Mila 🐶🍋</div><p>Thank you for helping shelter animals! ❤️🐶🐱🐰🐠</p></section>
-<section class="card"><h2>📸 Photos 📸</h2><p>Add pictures of your lemonade stand here later. 🍋📷</p></section>
-<section class="card"><h2>🌐 Website QR Code 🌐</h2><div class="qr">Add your website QR code here after your website is published. 📱🌐</div></section>
-<section class="card"><h2>❤️ Donation QR Code ❤️</h2><div class="qr">Add a parent-managed Venmo, PayPal, or Cash App QR code here. 💳❤️</div><p>Always use a parent or guardian's account. 👨‍👩‍👧‍👦</p></section>
-<footer>🐶 Every Cup Helps a Pup! 🍋<br><br>100% of proceeds help animal shelters. ❤️🐶🐱🐰🐠</footer>
-<script>
-const moneyRaised = 0;
-const goalAmount = 500;
-const needed = Math.max(goalAmount-moneyRaised,0);
-const percent = Math.min(Math.round((moneyRaised/goalAmount)*100),100);
-document.getElementById("raised").textContent="💰 Raised So Far: $"+moneyRaised+" 🐾";
-document.getElementById("goal").textContent="🎯 Goal: $"+goalAmount+" 🏆";
-document.getElementById("needed").textContent="🏦 Still Needed: $"+needed+" ❤️";
-document.getElementById("percent").textContent="📈 Progress: "+percent+"% 🎉";
-document.getElementById("bar").style.width=percent+"%";
-document.getElementById("bar").textContent=percent+"% 🐾";
-if(moneyRaised>=goalAmount)document.getElementById("message").textContent="🎉 WE DID IT! GOAL REACHED! 🐶🐱🐰🐠";
-</script>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Dogs Make Lemonade is a pup-powered fundraiser helping animal shelters through lemonade, bracelets, and community support.">
+    <title>Dogs Make Lemonade 🍋</title>
+    <style>
+      :root {
+        --lemon: #ffe66d;
+        --lemon-deep: #f7c948;
+        --sun: #fff8d9;
+        --mint: #7bdcb5;
+        --mint-deep: #2f8f6a;
+        --berry: #d94f70;
+        --plum: #5b2a6d;
+        --cream: #fffdf7;
+        --ink: #2b2b2b;
+        --muted: #5f5f5f;
+        --card-shadow: 0 18px 40px rgba(81, 53, 10, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.6;
+        color: var(--ink);
+        background: linear-gradient(180deg, #fffdf8 0%, #fff4b8 35%, #fff8d9 100%);
+      }
+      img { max-width: 100%; display: block; }
+      a { color: inherit; }
+      .container {
+        width: min(1100px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+      header {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #fff4a8 0%, #ffe474 30%, #ffd75b 100%);
+        border-bottom: 6px solid rgba(107, 68, 0, 0.18);
+      }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 18px 0;
+      }
+      .brand {
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        color: var(--plum);
+        font-size: clamp(1.2rem, 2vw, 1.8rem);
+      }
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        font-weight: 700;
+        color: var(--plum);
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 30px;
+        align-items: center;
+        padding: 48px 0 60px;
+      }
+      .eyebrow {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.5);
+        color: var(--mint-deep);
+        border: 2px solid rgba(47, 143, 106, 0.25);
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        font-size: 0.72rem;
+      }
+      h1 {
+        margin: 16px 0 12px;
+        font-size: clamp(2.6rem, 6vw, 5rem);
+        line-height: 0.95;
+        color: var(--plum);
+      }
+      .tagline {
+        font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+        font-weight: 700;
+        color: var(--mint-deep);
+        margin-bottom: 22px;
+      }
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 20px;
+      }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 22px;
+        border-radius: 999px;
+        font-weight: 800;
+        text-decoration: none;
+        border: 2px solid transparent;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .button:hover { transform: translateY(-1px); }
+      .button.primary {
+        background: var(--berry);
+        color: white;
+        box-shadow: 0 12px 25px rgba(217, 79, 112, 0.25);
+      }
+      .button.secondary {
+        background: rgba(255, 255, 255, 0.7);
+        border-color: rgba(91, 42, 109, 0.18);
+        color: var(--plum);
+      }
+      .hero-card {
+        background: rgba(255, 255, 255, 0.65);
+        border: 2px solid rgba(91, 42, 109, 0.12);
+        border-radius: 28px;
+        padding: 24px;
+        box-shadow: var(--card-shadow);
+        backdrop-filter: blur(4px);
+      }
+      .big-badge {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 200px;
+        border-radius: 22px;
+        background: linear-gradient(135deg, #fff 0%, #ffe6a3 100%);
+        font-size: clamp(3rem, 8vw, 5.5rem);
+        box-shadow: inset 0 0 0 2px rgba(91, 42, 109, 0.08);
+      }
+      .tiny-quote {
+        margin-top: 18px;
+        font-weight: 700;
+        color: var(--plum);
+        text-align: center;
+      }
+      main { padding: 28px 0 72px; }
+      section { margin-top: 26px; padding: 22px 0; }
+      .card {
+        background: rgba(255, 255, 255, 0.72);
+        border: 2px solid rgba(91, 42, 109, 0.08);
+        border-radius: 26px;
+        box-shadow: var(--card-shadow);
+        padding: clamp(22px, 4vw, 34px);
+      }
+      .section-heading {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 18px;
+      }
+      h2 {
+        margin: 0;
+        color: var(--plum);
+        font-size: clamp(1.8rem, 3vw, 2.7rem);
+      }
+      .lead {
+        color: var(--muted);
+        margin: 0;
+        font-size: 1.05rem;
+      }
+      .mission-grid, .feature-grid, .team-grid, .gallery-grid {
+        display: grid;
+        gap: 18px;
+      }
+      .mission-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .feature, .team-member, .photo-card {
+        background: linear-gradient(180deg, #fffefb 0%, #fff8ea 100%);
+        border: 2px solid rgba(91, 42, 109, 0.08);
+        border-radius: 22px;
+        padding: 22px;
+      }
+      .feature h3, .team-member h3 { margin-top: 0; margin-bottom: 8px; color: var(--plum); font-size: 1.5rem; }
+      .feature p, .team-member p, .photo-card p, .item p, .goal-copy, .info-text { margin: 0; color: var(--muted); }
+      .highlight {
+        display: inline-block;
+        padding: 10px 14px;
+        border-radius: 14px;
+        background: rgba(123, 220, 181, 0.14);
+        color: var(--mint-deep);
+        font-weight: 800;
+        margin-bottom: 14px;
+      }
+      .goal-box {
+        background: linear-gradient(135deg, #fffefb 0%, #fff4d6 100%);
+        border-radius: 20px;
+        padding: 22px;
+        border: 2px solid rgba(91, 42, 109, 0.08);
+      }
+      .progress-wrap { margin-top: 20px; }
+      .progress-bar {
+        height: 28px;
+        width: 100%;
+        background: #f0e7cf;
+        border-radius: 999px;
+        overflow: hidden;
+        border: 2px solid rgba(91, 42, 109, 0.08);
+      }
+      .progress-fill {
+        height: 100%;
+        width: 0;
+        background: linear-gradient(90deg, #7bdcb5 0%, #4cc985 55%, #2ea866 100%);
+        border-radius: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: 800;
+        transition: width 0.6s ease;
+        min-width: 76px;
+      }
+      .goal-row {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 18px;
+      }
+      .stat {
+        background: #fffaf0;
+        border-radius: 18px;
+        border: 2px solid rgba(91, 42, 109, 0.08);
+        padding: 16px 12px;
+        text-align: center;
+      }
+      .stat strong {
+        display: block;
+        font-size: clamp(1.3rem, 2vw, 2rem);
+        color: var(--plum);
+      }
+      .stat span {
+        display: block;
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+      .menu-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+      .item {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        background: linear-gradient(180deg, #fffefb 0%, #fff4d7 100%);
+        border: 2px solid rgba(91, 42, 109, 0.08);
+        border-radius: 22px;
+        padding: 22px;
+      }
+      .item h3 { margin: 0; color: var(--plum); font-size: 1.5rem; }
+      .price { color: var(--berry); font-weight: 900; font-size: 1.5rem; }
+      .team-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .avatar {
+        display: grid; place-items: center;
+        width: 64px; height: 64px; border-radius: 50%;
+        background: linear-gradient(135deg, #ffe66d, #ffc43d);
+        font-size: 2rem; margin-bottom: 14px;
+      }
+      .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .photo-card {
+        min-height: 180px; display: flex; align-items: flex-end; justify-content: flex-start;
+        background: linear-gradient(135deg, rgba(255, 230, 109, 0.35), rgba(123, 220, 181, 0.2));
+      }
+      .photo-card > div {
+        width: 100%; padding: 12px 14px; border-radius: 14px; background: rgba(255, 255, 255, 0.62);
+      }
+      .photo-card strong {
+        display: block; font-size: 1.1rem; color: var(--plum); margin-bottom: 6px;
+      }
+      .cta-panel {
+        display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 18px; align-items: center;
+      }
+      .qr-box {
+        min-height: 200px; display: grid; place-items: center;
+        border: 2px dashed rgba(91, 42, 109, 0.18); border-radius: 22px;
+        background: linear-gradient(135deg, #fffefc 0%, #fff0c2 100%);
+        color: var(--plum); font-weight: 800; font-size: 1.05rem;
+      }
+      footer {
+        background: linear-gradient(180deg, #6f4926 0%, #432b11 100%);
+        color: white; text-align: center; padding: 34px 16px 52px; font-weight: 700;
+      }
+      @media (max-width: 820px) {
+        .hero, .mission-grid, .menu-grid, .team-grid, .gallery-grid, .goal-row, .cta-panel {
+          grid-template-columns: 1fr;
+        }
+        .topbar { flex-direction: column; align-items: flex-start; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="topbar">
+          <div class="brand">🐶 DOGS MAKE LEMONADE</div>
+          <nav class="nav" aria-label="Main navigation">
+            <a href="#mission">Mission</a>
+            <a href="#goal">Goal</a>
+            <a href="#menu">Menu</a>
+            <a href="#team">Team</a>
+            <a href="#support">Support</a>
+          </nav>
+        </div>
+        <div class="hero">
+          <div>
+            <div class="eyebrow">Every cup helps a pup</div>
+            <h1>Fresh lemonade. Big hearts. Happy tails.</h1>
+            <div class="tagline">We’re turning sunny sips into shelter support for animals in need.</div>
+            <div class="cta-row">
+              <a class="button primary" href="#support">Donate today</a>
+              <a class="button secondary" href="#menu">See our menu</a>
+            </div>
+          </div>
+          <div class="hero-card" aria-label="Dogs Make Lemonade highlight">
+            <div class="big-badge">🍋🐶</div>
+            <div class="tiny-quote">“Every Cup Helps a Pup!”</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <section id="mission" class="card">
+          <div class="section-heading">
+            <h2>🐾 Our mission</h2>
+            <p class="lead">Hi! We are Miles, Penny, Blake, and Mila. We created this lemonade stand to help animals in need.</p>
+          </div>
+          <div class="mission-grid">
+            <article class="feature">
+              <div class="highlight">💚 Community</div>
+              <h3>Support local animals</h3>
+              <p>We raise funds to help pets find safe homes, care, and love while building a kinder community.</p>
+            </article>
+            <article class="feature">
+              <div class="highlight">🍋 Simple joy</div>
+              <h3>Fresh and fun</h3>
+              <p>Our stand brings smiles through cool lemonade, cheerful service, and a cause families can feel good about.</p>
+            </article>
+            <article class="feature">
+              <div class="highlight">❤️ Real impact</div>
+              <h3>100% for shelters</h3>
+              <p>Every dollar goes to helping animal shelters care for rescued pets and provide essentials.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="goal" class="card">
+          <div class="section-heading">
+            <h2>🏆 Fundraiser goal</h2>
+            <p class="lead">Together we can help more pups feel safe, loved, and at home.</p>
+          </div>
+          <div class="goal-box">
+            <div class="goal-copy">We’re raising funds to help animals find safe and happy homes. Every purchase and donation adds up to a bigger impact.</div>
+            <div class="goal-row">
+              <div class="stat"><strong id="raised">$0</strong><span>Raised</span></div>
+              <div class="stat"><strong id="goalAmount">$500</strong><span>Goal</span></div>
+              <div class="stat"><strong id="needed">$500</strong><span>Still needed</span></div>
+              <div class="stat"><strong id="percent">0%</strong><span>Complete</span></div>
+            </div>
+            <div class="progress-wrap">
+              <div class="progress-bar" aria-label="Fundraising progress">
+                <div id="bar" class="progress-fill">0%</div>
+              </div>
+            </div>
+            <div id="message" class="goal-copy" style="margin-top: 16px; font-weight: 800; color: var(--mint-deep);"></div>
+          </div>
+        </section>
+
+        <section id="menu" class="card">
+          <div class="section-heading">
+            <h2>🍋 Our menu</h2>
+            <p class="lead">Fresh treats and fun add-ons for every kind of supporter.</p>
+          </div>
+          <div class="menu-grid">
+            <article class="item">
+              <h3>🍋 Fresh lemonade</h3>
+              <div class="price">$2</div>
+              <p>Enjoy a refreshing cup while helping animals in need.</p>
+            </article>
+            <article class="item">
+              <h3>🐕 Mini dog bracelet</h3>
+              <div class="price">$2</div>
+              <p>Latex free and bright. A cheerful keepsake with a sweet cause behind it.</p>
+            </article>
+            <article class="item">
+              <h3>🐾 Standard or XL dog bracelet</h3>
+              <div class="price">$5</div>
+              <p>Perfect for a favorite pup, made to celebrate every tail wag.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="section-heading">
+            <h2>🌎 Animals we care about</h2>
+            <p class="lead">We care for dogs, cats, and all kinds of creatures who deserve safety and kindness.</p>
+          </div>
+          <div class="feature-grid">
+            <div class="feature"><h3>🐶 Dogs</h3><p>Rescue, foster, and support animal shelters helping pups find loving homes.</p></div>
+            <div class="feature"><h3>🐱 Cats</h3><p>Help create safe spaces for cats waiting for warmth, care, and adoption.</p></div>
+            <div class="feature"><h3>🐰 Bunnies & more</h3><p>Every animal matters—small pets, sea animals, and all rescued companions deserve care.</p></div>
+          </div>
+        </section>
+
+        <section id="team" class="card">
+          <div class="section-heading">
+            <h2>👋 Meet the team</h2>
+            <p class="lead">A friendly group of kids making a difference with heart, hustle, and lemonade.</p>
+          </div>
+          <div class="team-grid">
+            <article class="team-member"><div class="avatar">🐶</div><h3>Miles</h3><p>Helping lead the mission and keep the stand cheerful.</p></article>
+            <article class="team-member"><div class="avatar">🐾</div><h3>Penny</h3><p>Spreading kindness and making every customer feel welcome.</p></article>
+            <article class="team-member"><div class="avatar">🍋</div><h3>Blake</h3><p>Helping with fundraising and making the stand shine.</p></article>
+            <article class="team-member"><div class="avatar">💛</div><h3>Mila</h3><p>Building community support and bringing the big heart energy.</p></article>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="section-heading">
+            <h2>📸 Photos</h2>
+            <p class="lead">A few placeholders for your happy stand moments and shelter smiles.</p>
+          </div>
+          <div class="gallery-grid">
+            <article class="photo-card"><div><strong>Sunny stand setup</strong><p>Fresh lemons, happy smiles, and a cheerful pup vibe.</p></div></article>
+            <article class="photo-card"><div><strong>Volunteer moment</strong><p>Community members sharing time and care for shelter pets.</p></div></article>
+            <article class="photo-card"><div><strong>Impact celebration</strong><p>Every cup helps a pup and every pup deserves a home.</p></div></article>
+          </div>
+        </section>
+
+        <section id="support" class="card">
+          <div class="section-heading">
+            <h2>❤️ Support this cause</h2>
+            <p class="lead">Your help can create a safer, brighter future for shelter animals.</p>
+          </div>
+          <div class="cta-panel">
+            <div class="info-text">
+              <p>Thanks for supporting local shelter animals! You can help by buying lemonade, donating, or sharing the mission with your family and friends.</p>
+              <div class="cta-row" style="margin-top:18px;">
+                <a class="button primary" href="#top">Help us grow</a>
+                <a class="button secondary" href="mailto:hello@dogsmakelemonade.org">Contact us</a>
+              </div>
+            </div>
+            <div class="qr-box" aria-label="Donation QR code placeholder">QR code placeholder<br>Venmo / PayPal / Cash App</div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>🐶 Every Cup Helps a Pup! 🍋<br>100% of proceeds help animal shelters. ❤️🐱🐰🐠</footer>
+
+    <script>
+      const moneyRaised = 320;
+      const goalAmount = 500;
+      const needed = Math.max(goalAmount - moneyRaised, 0);
+      const percent = Math.min(Math.round((moneyRaised / goalAmount) * 100), 100);
+
+      document.getElementById('raised').textContent = '$' + moneyRaised;
+      document.getElementById('goalAmount').textContent = '$' + goalAmount;
+      document.getElementById('needed').textContent = '$' + needed;
+      document.getElementById('percent').textContent = percent + '%';
+
+      const bar = document.getElementById('bar');
+      bar.style.width = percent + '%';
+      bar.textContent = percent + '%';
+
+      const message = document.getElementById('message');
+      if (moneyRaised >= goalAmount) {
+        message.textContent = '🎉 Goal reached! We did it! Every pup deserves a safe, happy home.';
+      } else {
+        message.textContent = '💛 We are getting closer to a brighter future for shelter pets.';
+      }
+    </script>
+  </body>
 </html>
